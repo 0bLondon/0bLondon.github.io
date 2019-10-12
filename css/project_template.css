@@ -1,0 +1,140 @@
+.nav-item {
+	color: white !important;
+}
+
+.sides {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-repeat:no-repeat;
+	background: -webkit-linear-gradient(90deg, #009FFF, #ec2F4B);
+	background: -moz-linear-gradient(90deg, #009FFF, #ec2F4B);
+	background: -ms-linear-gradient(90deg, #009FFF, #ec2F4B);
+	background: -o-linear-gradient(90deg,#009FFF, #ec2F4B);
+	background: linear-gradient(90deg,#009FFF, #ec2F4B);
+}
+
+.bg-3 {
+	padding-top: 6em;
+	padding-bottom: 4em;
+}
+
+.icon-padding {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.button-mid {
+	padding-left: 2em;
+	padding-right: 2em;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 40px;
+	color: white !important;
+}
+
+.nav-button {
+	color: white !important;
+	border-color: white !important;
+}
+
+.navbar-bottom {
+	color: white !important;
+}
+
+.pill-space {
+	margin-right: 20px;
+	margin-left: 20px;
+	padding-left: 2em !important;
+	padding-right: 2em !important;
+}
+
+.bottom-button-space {
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+.section-header {
+	font-weight: lighter;
+	font-size: 60px;
+  	background: -webkit-linear-gradient(90deg, #009FFF, #ec2F4B);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+  	padding-bottom: 0.2em;
+}
+
+@media only screen and (max-width: 850px) {
+    .pill-space {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .card {
+    	margin-top: 0.5em;
+    	margin-bottom: 0.5em;
+    }
+    .section-header {
+    	font-size: 40px;
+    }
+    .projects-background {
+		background: #ecf0f1;
+		padding-left: 0em;
+		padding-right: 0em;
+	}
+	.w-75 {
+		width: 100% !important;
+		padding-right: 5px !important;
+		padding-left: 5px !important;
+	}
+	.col {
+		padding-left: 5px !important;
+		padding-right: 5px !important;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	.bottom-button-space {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+}
+
+.footer-background {
+	background-color: #343a40;
+	color: white;
+}
+
+i {
+	color: white;
+}
+
+.contact-me-info {
+	font-size: 20px;
+}
+
+.name-sub-text {
+	font-weight: lighter !important;
+	font-size: 30px;
+	color: white;
+}
+
+.card {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.projects-background {
+	background: #ecf0f1;
+	padding-left: 5em;
+	padding-right: 5em;
+}
+
+.project-image {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.project-information {
+	padding-top: 2em;
+	font-size: 20px;
+}
