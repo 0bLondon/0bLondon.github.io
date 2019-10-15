@@ -3,6 +3,7 @@
 }
 
 .bg-1 { 
+	height: 100vh;
 	padding-top: 12em;
 	padding-bottom: 5em;
 	color: #ffffff;
