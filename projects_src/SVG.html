@@ -6,62 +6,56 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/homepage.css">
+	<link rel="stylesheet" href="../css/project_template.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="icon" href="images/favicon.PNG">
-
+	<link rel="icon" href="../images/favicon.PNG">
+	<script lang="javascript" src="../js/jquery-3.1.0.min.js"></script>
+	<script lang="javascript" src="../js/d3.min.js"></script>
 	<title>Benjamin London</title>
 </head>
+
+
 
 <body>
 
 	<!-- Top Navbar -->
 	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-		<a class="navbar-brand" href="index.html"><img src="images/initials.png" width="81" height="50"></a>
+		<a class="navbar-brand" href="index.html"><img src="../images/initials.png" width="81" height="50"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav ml-auto">
 				<nav class="nav nav-pills nav-fill">
-					<a class="nav-item nav-link active pill-space" href="index.html">Home</a>
-					<a class="nav-item nav-link active pill-space" href="London-Resume.pdf" target="_blank">Resume</a>
-					<a class="nav-item nav-link active pill-space" href="projects.html">Projects</a>
-					<a class="nav-item nav-link active pill-space" href="index.html#contact-me">Contact</a>
+					<a class="nav-item nav-link active pill-space" href="../index.html">Home</a>
+					<a class="nav-item nav-link active pill-space" href="../London-Resume.pdf" target="_blank">Resume</a>
+					<a class="nav-item nav-link active pill-space" href="../projects.html">Projects</a>
+					<a class="nav-item nav-link active pill-space" href="../index.html#contact-me">Contact</a>
 				</nav>
 			</div>
 		</div>
 	</nav>
 
 
-<!-- 	Main View -->
-<div class="container-fluid bg-1 text-center">
-	<img src="images/name.png" class="img-fluid" style="padding-top: 2em;" width="750" alt="Benjamin London">
-	</br></br></br>
-	<p class="name-sub-text">data scientist & programmer</p>
-	</br></br>
-	<p class="name-sub-text">/* More projects are in the works! */</p>
-	</br></br>
-	<a href="London-Resume.pdf" target="_blank"><button type="button" class="btn btn-primary btn-lg button-mid">Resume</button></a>
-	<a href="projects.html"><button type="button" class="btn btn-primary btn-lg button-mid">Projects</button></a>
-	</br></br></br>
+
+
+<!-- Project Information -->
+<div class="sides">
+<div class="container-fluid w-75 bg-3 text-center projects-background">
+	<p class="section-header">SVG Visualization</p>
+	<div class="container">
+  		<div class="row">
+    		<div class="col" id = "svg_space">
+   			<script lang="javascript" src="../js/svg.js"></script>
+    		</div>
+  		</div>
+  		<div class="row">
+  			<p class="project-information">Javascript visualization of the word Aligned. As one of my first forays into the basics of design and javascript, I am very proud of my work on this project! Created using d3 and jquery for a data visualization course as a part of course "tryouts". This submission was named the winner of the tryouts for being visually appeally, intuitive to use, and fun to play with. Please feel free to play around with the live demo above!</p>
+  		</div>
+  	</div>
+</div>
 </div>
 
-
-<!-- About Me -->
-<div class="container-fluid w-75 bg-2 text-center">
-	<a name="about-me"></a>
-	<p class="section-header">About Me</p>
-	<p class="about-me-info"> Hello! My name is Ben London and I am an undergraduate student at Tufts University. I am studying Data Science and Computer Science and am involved with a variety of clubs on campus including Tufts MAKE, Robotics, and SEDS! I have a strong interest in Machine Learning and Artifical Intelligence techinques as well as low-level programming and optimization. In addition to clubs, I am also a teaching assistant at Tufts and have a love of teaching computer science to people of all ages. If you'd like to <a href="#contact-me">contact me</a>, please feel free to reach out!</p>
-</div>
-
-
-<!-- Contact Section -->
-<div class="container-fluid bg-4 text-center">
-	<a name="contact-me"></a>
-	<p class="section-header">Contact Me</p>
-	<p class="contact-me-info">Personal Email - <a href="mailto:ben@londonfamily.com">ben@londonfamily.com</a></br>School Email - <a href="mailto:benjamin.london@tufts.com">benjamin.london@tufts.edu</a></br></p>
-</div>
 
 
 
@@ -82,15 +76,7 @@
 </footer>
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150466813-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-150466813-1');
-</script>
+<!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
