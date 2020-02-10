@@ -3,7 +3,10 @@
 }
 
 .bg-1 { 
-	height: 100vh;
+	height:auto;
+	min-height:100vh;
+	height:auto !important;        /* for IE as it does not support min-height */
+	height:100vh;
 	padding-top: 12em;
 	padding-bottom: 5em;
 	color: #ffffff;
