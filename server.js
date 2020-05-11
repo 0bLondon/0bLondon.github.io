@@ -8,7 +8,7 @@ app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, '.')));
 app.use(bodyParser.json());
 
-app.post('/test', (req, res) => {
+app.post('/sudoku_solver', (req, res) => {
 
     const { spawn } = require('child_process');
     const pyProg = spawn('python3', ['./scripts/driver.py', req.body['board']]);

@@ -153,25 +153,27 @@
 
 			const url = 'http://localhost:8080/test/'
 			const data = JSON.stringify({"board":sudoku.matrix.join("")});
-			$.ajax({
-        		url: '/test',
-        		type: 'POST',
-        		contentType: 'application/json',
-        		data: data,
-        		success: function(response){
-        			solved_puzzle = response.split``.map(x=>+x);
-        			console.log(solved_puzzle)
-        			sudoku.matrix = solved_puzzle;
-        			for(var i = 0; i < 9; i++) {
-        				for(var j = 0; j < 9; j++) {
-        					var cell = document.getElementById("x" + i + "_" + j);
-        					cell.firstChild.nodeValue = sudoku.getVal(i, j);
 
-        				}
-        			}
-        		}
-        	})
+			(function ($) {
+				$.ajax({
+	        		url: '/test',
+	        		type: 'POST',
+	        		contentType: 'application/json',
+	        		data: data,
+	        		success: function(response){
+	        			solved_puzzle = response.split``.map(x=>+x);
+	        			console.log(solved_puzzle)
+	        			sudoku.matrix = solved_puzzle;
+	        			for(var i = 0; i < 9; i++) {
+	        				for(var j = 0; j < 9; j++) {
+	        					var cell = document.getElementById("x" + i + "_" + j);
+	        					cell.firstChild.nodeValue = sudoku.getVal(i, j);
 
+	        				}
+	        			}
+	        		}
+	        	})
+			})(jQuery);
 			
 		}
 
@@ -447,6 +449,6 @@
 				</div>
 			</div>
 		</div>
-</html>
+	</body>
 
 
