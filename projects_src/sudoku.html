@@ -8,9 +8,39 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<link rel="stylesheet" href="../css/project_template.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="icon" href="../images/favicon.PNG">
-	<script src="http://brython.info/src/brython.js"></script>
 	<title>Benjamin London</title>
+
+	<style type="text/css">
+		.board {
+			width: 100%;
+			max-width:450px;
+			halign: center;
+		}
+
+		table {
+			border: 1px black solid;
+			border-collapse: collapse;
+			width:50%;
+		}
+
+		td {
+			border: 1px black solid;
+			width: 11.11%;
+			padding-bottom: 11.11%;
+			overflow: hidden;
+			text-align: center;
+		}
+		td div {
+			position:absolute;
+			width:11.11%;
+			height:11.11%;
+			max-width:50px;
+			text-align:center;
+			font-size:8vw;
+			cursor:default;
+			background-color: rgba(255,255,255,0);
+		}
+	</style>>
 </head>
 
 
@@ -44,9 +74,112 @@
 	<p class="section-header">Sudoku Solver</p>
 	<div class="container">
   		<div class="row">
-    		<div class="col">
+<!--     		<div class="col">
     			<img src="../images/sudoku/image1.png" class="img-fluid project-image" alt="Responsive image" width="50%">
-    		</div>
+    		</div> -->
+  		</div>
+  		<div id="Board">
+  			<table>
+  				<tr>
+  					<td><div id="x0_0"></div></td>
+  					<td><div id="x0_1"></div></td>
+  					<td><div id="x0_2"></div></td>
+  					<td><div id="x0_3"></div></td>
+  					<td><div id="x0_4"></div></td>
+  					<td><div id="x0_5"></div></td>
+  					<td><div id="x0_6"></div></td>
+  					<td><div id="x0_7"></div></td>
+  					<td><div id="x0_8"></div></td>
+  				</tr>
+  				<tr>
+  					<td><div id="x1_0"></div></td>
+  					<td><div id="x1_1"></div></td>
+  					<td><div id="x1_2"></div></td>
+  					<td><div id="x1_3"></div></td>
+  					<td><div id="x1_4"></div></td>
+  					<td><div id="x1_5"></div></td>
+  					<td><div id="x1_6"></div></td>
+  					<td><div id="x1_7"></div></td>
+  					<td><div id="x1_8"></div></td>
+  				</tr>
+  				<tr>
+  					<td><div id="x2_0"></div></td>
+  					<td><div id="x2_1"></div></td>
+  					<td><div id="x2_2"></div></td>
+  					<td><div id="x2_3"></div></td>
+  					<td><div id="x2_4"></div></td>
+  					<td><div id="x2_5"></div></td>
+  					<td><div id="x2_6"></div></td>
+  					<td><div id="x2_7"></div></td>
+  					<td><div id="x2_8"></div></td>
+  				</tr>
+  				<tr>
+  					<td><div id="x3_0"></div></td>
+  					<td><div id="x3_1"></div></td>
+  					<td><div id="x3_2"></div></td>
+  					<td><div id="x3_3"></div></td>
+  					<td><div id="x3_4"></div></td>
+  					<td><div id="x3_5"></div></td>
+  					<td><div id="x3_6"></div></td>
+  					<td><div id="x3_7"></div></td>
+  					<td><div id="x3_8"></div></td>
+  				</tr>
+  				<tr>
+  					<td><div id="x4_0"></div></td>
+  					<td><div id="x4_1"></div></td>
+  					<td><div id="x4_2"></div></td>
+  					<td><div id="x4_3"></div></td>
+  					<td><div id="x4_4"></div></td>
+  					<td><div id="x4_5"></div></td>
+  					<td><div id="x4_6"></div></td>
+  					<td><div id="x4_7"></div></td>
+  					<td><div id="x4_8"></div></td>
+  				</tr>
+  				<tr>
+  					<td><div id="x5_0"></div></td>
+  					<td><div id="x5_1"></div></td>
+  					<td><div id="x5_2"></div></td>
+  					<td><div id="x5_3"></div></td>
+  					<td><div id="x5_4"></div></td>
+  					<td><div id="x5_5"></div></td>
+  					<td><div id="x5_6"></div></td>
+  					<td><div id="x5_7"></div></td>
+  					<td><div id="x5_8"></div></td>
+  				</tr>
+  				<tr>
+  					<td><div id="x6_0"></div></td>
+  					<td><div id="x6_1"></div></td>
+  					<td><div id="x6_2"></div></td>
+  					<td><div id="x6_3"></div></td>
+  					<td><div id="x6_4"></div></td>
+  					<td><div id="x6_5"></div></td>
+  					<td><div id="x6_6"></div></td>
+  					<td><div id="x6_7"></div></td>
+  					<td><div id="x6_8"></div></td>
+  				</tr>
+  				<tr>
+  					<td><div id="x7_0"></div></td>
+  					<td><div id="x7_1"></div></td>
+  					<td><div id="x7_2"></div></td>
+  					<td><div id="x7_3"></div></td>
+  					<td><div id="x7_4"></div></td>
+  					<td><div id="x7_5"></div></td>
+  					<td><div id="x7_6"></div></td>
+  					<td><div id="x7_7"></div></td>
+  					<td><div id="x7_8"></div></td>
+  				</tr>
+  				<tr>
+  					<td><div id="x8_0"></div></td>
+  					<td><div id="x8_1"></div></td>
+  					<td><div id="x8_2"></div></td>
+  					<td><div id="x8_3"></div></td>
+  					<td><div id="x8_4"></div></td>
+  					<td><div id="x8_5"></div></td>
+  					<td><div id="x8_6"></div></td>
+  					<td><div id="x8_7"></div></td>
+  					<td><div id="x8_8"></div></td>
+  				</tr>
+  			</table>
   		</div>
   		<div class="row">
   			<p class="project-information">AI sudoku solver implemented using an ARC-3 Consistency Algorithm. When run, the user is prompted to choose either a preloaded board or they can input their own. There are 5 levels of preloaded boards. The program is able to solve (or determine a lack of solution) for all puzzles attempted in ~2-3 seconds. If you'd like to try it out for yourself, the source code is available <a href="https://github.com/0bLondon/SudokuSolver" target="_blank">here!</a> </p>
