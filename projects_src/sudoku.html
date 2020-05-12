@@ -160,7 +160,6 @@
 	        		data: data,
 	        		success: function(response){
 	        			solved_puzzle = response.split``.map(x=>+x);
-	        			console.log(solved_puzzle)
 	        			sudoku.matrix = solved_puzzle;
 	        			for(var i = 0; i < 9; i++) {
 	        				for(var j = 0; j < 9; j++) {
