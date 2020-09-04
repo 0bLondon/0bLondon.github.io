@@ -16,7 +16,7 @@
 		.board {
 		width: 100%;
 		max-width:450px;
-		halign: center;
+		margin:auto;
 		}
 
 		table {
@@ -39,7 +39,7 @@
 		height:11.11%;
 		max-width:50px;
 		text-align:center;
-		font-size:8vw;
+		font-size:4vw;
 		cursor:default;
 		background-color: rgba(255,255,255,0);
 		}
@@ -54,7 +54,7 @@
 
 		 @media (min-width: 450px) {
 		    td div{
-			    font-size: 35px;
+			    font-size: 25px;
 		    }
 		 }
 
@@ -115,6 +115,8 @@
 
 		// start a new game. this resets the board and generates a new puzzle.
 		function newGame() {
+			$("#time-to-solve").text("");
+			$("#failure-msg").text("");
 			unselectCell();
 
 			// update the puzzle difficulty level based on the radio buttons.
@@ -150,24 +152,36 @@
 		// solve the game and display the solution.
 		function solve() {
 
-			const url = 'https://blondodev.herokuapp.com/sudoku_solver'
+			const url = '/sudoku_solver'
 			const data = JSON.stringify({"board":sudoku.matrix.join("")});
 			(function ($) {
 				$.ajax({
 	        		url: url,
 	        		type: 'POST',
-	        		contentType: 'application/json',
+							contentType: 'application/json',
+							dataType: "json",
 	        		data: data,
 	        		success: function(response){
-	        			solved_puzzle = response.split``.map(x=>+x);
-	        			sudoku.matrix = solved_puzzle;
-	        			for(var i = 0; i < 9; i++) {
-	        				for(var j = 0; j < 9; j++) {
-	        					var cell = document.getElementById("x" + i + "_" + j);
-	        					cell.firstChild.nodeValue = sudoku.getVal(i, j);
+								if(response['not_filled']){
+									if(response['solved']){
+										solved_puzzle = response['board'].split``.map(x=>+x);
+										sudoku.matrix = solved_puzzle;
+										for(var i = 0; i < 9; i++) {
+											for(var j = 0; j < 9; j++) {
+												var cell = document.getElementById("x" + i + "_" + j);
+												cell.firstChild.nodeValue = sudoku.getVal(i, j);
 
-	        				}
-	        			}
+											}
+										}
+										$("#time-to-solve").text("Solved in " + response['time'] + "s!");
+									}
+									else {
+										$("#failure-msg").text("This board cannot be solved :(");
+									}
+								}
+								else {
+									$("#failure-msg").text("This board is already filled! Hit \"New Game\" or clear some values.");
+								}
 	        		}
 	        	})
 			})(jQuery);
@@ -324,7 +338,7 @@
 
 	<!-- Top Navbar -->
 	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-		<a class="navbar-brand" href="index.html"><img src="../images/initials.png" width="81" height="50"></a>
+		<a class="navbar-brand" href="../index.html"><img src="../images/initials.png" width="81" height="50"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -345,29 +359,29 @@
 
 <!-- Project Information -->
 <div class="sides">
-<div class="container-fluid w-75 bg-3 text-center projects-background" onload="brython()">
+<div class="container-fluid w-75 bg-3 text-center projects-background">
 	<p class="section-header">Sudoku Solver</p>
 	<div class="container">
-  		<div class="row">
-<!--     		<div class="col">
-    			<img src="../images/sudoku/image1.png" class="img-fluid project-image" alt="Responsive image" width="50%">
-    		</div> -->
+  		<div class="row" style="margin:auto;">
   		</div>
   		<div class="container">
-  			<div class="row" style="margin-top:10px;">
-  				<div class="col-sm-8">
-  					<div class="row">
+  			<div style="margin-top:auto;">
+  				<div class="col-sm-8" style="margin:auto;">
+  					<div>
   						<div class="col-md-12">
   						<form name="controls">
-  						<input id="easy" type="radio" name="level" checked="true" value="0"><label for="easy">Easy</label>
-  						<input id="medium" type="radio" name="level" value="1"><label for="medium">Medium</label>
-  						<input id="hard" type="radio" name="level" value="2"><label for="hard">Hard</label>
-  						<input id="manual" type="radio" name="level" value="3"><label for="manual">Manual</label>
+  						<input id="easy" type="radio" name="level" checked="true" value="0" onclick="newGame();"><label for="easy">&nbsp;Easy&nbsp;</label>
+  						<input id="medium" type="radio" name="level" value="1" onclick="newGame();"><label for="medium">&nbsp;Medium&nbsp;</label>
+  						<input id="hard" type="radio" name="level" value="2" onclick="newGame();"><label for="hard">&nbsp;Hard&nbsp;</label>
+  						<input id="manual" type="radio" name="level" value="3" onclick="newGame();"><label for="manual" >&nbsp;Manual&nbsp;</label>
   						</form>
   						</div>
-  					</div>
-  					<input id="new" class="btn btn-default" type="button" value="New Game" onclick="newGame();">
-  					<input class="btn btn-default" type="button" value="Solve It" onclick="solve();">
+						</div>
+						<div>
+  						<input id="new" class="btn btn-secondary" type="button" value="New Game" onclick="newGame();">
+							<input class="btn btn-secondary" type="button" value="Solve It" onclick="solve();">
+						</div>
+						<br>
   					<div class="row bottom-spacer-5">
   						<div class="col-md-12">
   						<div class="board center-block">
@@ -476,8 +490,12 @@
   				</div>
   			</div>
 		</div>
+		
+			<p id="time-to-solve"></p>
+			<p id="failure-msg"></p>
+
   		<div class="row">
-  			<p class="project-information">AI sudoku solver implemented using an ARC-3 Consistency Algorithm. When run, the user is prompted to choose either a preloaded board or they can input their own. There are 5 levels of preloaded boards. The program is able to solve (or determine a lack of solution) for all puzzles attempted in ~2-3 seconds. If you'd like to try it out for yourself, the source code is available <a href="https://github.com/0bLondon/SudokuSolver" target="_blank">here!</a> </p>
+  			<p class="project-information">AI sudoku solver implemented using an ARC-3 Consistency Algorithm. Originally implemented with a CLI, when run, the program prompted the user to choose either a preloaded board or input their own. With the new UI above, this have been transformed into a set of buttons and input fields. There are 3 levels of preloaded boards and an option for manual input. The program is able to solve (or determine a lack of solution) for all puzzles attempted in under 3 seconds (with the average being under 1s). If you'd like to try it out for yourself please feel free to play with the demo above! The source code for the original CLI-based program is available <a href="https://github.com/0bLondon/SudokuSolver" target="_blank">here!</a> </p>
   		</div>
   	</div>
 </div>

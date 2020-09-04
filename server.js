@@ -17,10 +17,9 @@ app.use(function (req, res, next) {
 });
 
 app.post('/sudoku_solver', (req, res) => {
-
     const { spawn } = require('child_process');
     const pyProg = spawn('python3', ['./scripts/driver.py', req.body['board']]);
-
+    
     pyProg.stdout.on('data', function(data) {
         	res.write(data);
         	res.end();

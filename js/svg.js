@@ -1,4 +1,4 @@
-var dimension = 500;
+var dimension = Math.min(500,document.getElementById("svg_space").offsetWidth);
 
 var svg = d3.select('#svg_space').append('svg')
 	.attr('width', dimension)

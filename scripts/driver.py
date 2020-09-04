@@ -1,6 +1,6 @@
 import time
 from sudoku import Sudoku
-import sys
+import sys, json
 
 ERROR = False
 SOLVED = True
@@ -67,28 +67,27 @@ def solve_sudoku_ac3(sudoku):
 				sudoku.domains[domain] = assignment[domain]
 
 		if (not assignment):
-			print("Error: There is no solution to this sudoku puzzle")
 			return ERROR
-		return SOLVED;
+		return SOLVED
 
-def print_init_board(board):
-	string = ''
-	count = 1
-	for val in board:
+# def print_init_board(board):
+# 	string = ''
+# 	count = 1
+# 	for val in board:
 
-		if (val =='0'):
-			string = string + '-' + ' '
-		else:
-			string = string + val + ' '
+# 		if (val =='0'):
+# 			string = string + '-' + ' '
+# 		else:
+# 			string = string + val + ' '
 
-		if(count % 9 == 0):
-			string += '\n'
-		elif(count % 3 == 0):
-			string += '|'
-		if(count % 27 == 0 and count != 81):
-			string += '-------------------\n'
-		count += 1
-	print(string)
+# 		if(count % 9 == 0):
+# 			string += '\n'
+# 		elif(count % 3 == 0):
+# 			string += '|'
+# 		if(count % 27 == 0 and count != 81):
+# 			string += '-------------------\n'
+# 		count += 1
+# 	print(string)
 
 
 def print_solved_board(sudoku):
@@ -96,24 +95,27 @@ def print_solved_board(sudoku):
 		count = 1
 		for var in sudoku.variables:
 			string = string + str(sudoku.domains[var])
-		print(string)
+		return string
 
 
 if __name__== '__main__':
 
+	ret_val = {}
 
-	# board = input()
 	board = sys.argv[1]
 
-	# print_init_board(board)
+	ret_val['not_filled'] = bool(board.count('0'))
 	sudoku = Sudoku(board)
 
 	start_time = time.time()
 	solved = solve_sudoku_ac3(sudoku)
 	end_time = time.time()
-	# print()
-	if(solved):
-		# print(sudoku.variables);
-		print_solved_board(sudoku)
-		# print("Solve Time: " + str(end_time - start_time) + " seconds")
+
+	ret_val['solved'] = solved
 	
+
+	if(solved):
+		ret_val['board'] = print_solved_board(sudoku)
+		ret_val['time'] = str(round(end_time - start_time, 5))
+
+	print(json.dumps(ret_val))	
