@@ -152,7 +152,7 @@
 		// solve the game and display the solution.
 		function solve() {
 
-			const url = '/sudoku_solver'
+			const url = 'https://blondodev.herokuapp.com/sudoku_solver'
 			const data = JSON.stringify({"board":sudoku.matrix.join("")});
 			(function ($) {
 				$.ajax({
